@@ -96,6 +96,12 @@
       border-radius: 6px;
       margin-top: 15px;
     }
+
+    figcaption {
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -133,16 +139,18 @@
   <main id="conteudo-principal">
     
     <article class="cartao" id="secao-1">
-      <h2>O que é Deficiência Visual?</h2>
+      <h2>Uso de Leitores de Tela na Web</h2>
       <p class="texto-leitura">
-        A deficiência visual envolve desde a perda parcial da visão (baixa visão) até a cegueira total.
-        Pessoas com baixa visão se beneficiam de fontes maiores e modos de alto contraste, enquanto
-        pessoas cegas utilizam leitores de tela que convertem o texto escrito em voz sintetizada.
+        O leitor de telas é uma tecnologia assistiva muito utilizada por pessoas cegas e com baixa visão.
+        Ele lê o texto do site em voz alta e permite a navegação total utilizando apenas o teclado.
       </p>
       
-      <!-- Imagem acessível com alt explicativo -->
-      <img src="https://images.unsplash.com/photo-1584697964400-2ae6a2f620ac?w=800" 
-           alt="Mão de uma pessoa cega lendo um livro impresso no sistema Braille." />
+      <!-- Imagem extraída do artigo do Movimento Web para Todos -->
+      <figure>
+        <img src="https://mwpt.com.br/wp-content/uploads/2020/06/site-fone-ouvido.png" 
+             alt="Ilustração colorida da tela de computador que mostra a simulação de um site com duas colunas, textos e fotos. Há dois ícones de fones de ouvido: um está no lado esquerdo e outro no lado direito." />
+        <figcaption class="texto-leitura">Ao instalar um leitor de telas, você se aproxima ainda mais da causa da acessibilidade digital.</figcaption>
+      </figure>
     </article>
 
     <article class="cartao" id="secao-2">
@@ -155,9 +163,6 @@
         <li class="texto-leitura">Adicione ícones visuais ao lado de botões importantes.</li>
         <li class="texto-leitura">Ofereça suporte a áudio para ler o texto em voz alta automaticamente.</li>
       </ul>
-      
-      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800" 
-           alt="Pessoa segurando um tablet com ícone de fones de ouvido indicando o uso de áudio." />
     </article>
 
   </main>
@@ -210,7 +215,7 @@
       document.querySelectorAll('.lendo-agora').forEach(el => el.classList.remove('lendo-agora'));
     }
 
-    // Leitura ao passar o mouse ou focar (ajuda para quem não consegue ler bem)
+    // Leitura ao passar o mouse ou focar
     document.querySelectorAll('.texto-leitura').forEach(elemento => {
       elemento.addEventListener('mouseenter', () => {
         lerTexto(elemento.innerText, elemento);
