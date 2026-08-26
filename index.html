@@ -123,6 +123,7 @@
       color: #ffff00;
     }
 
+    /* Destaque visual enquanto o texto é lido */
     .lendo-agora {
       background-color: #ffeb3b;
       color: #000000 !important;
@@ -167,7 +168,9 @@
 <body>
 
   <!-- Atalho de acessibilidade para navegação direta -->
-  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+  <a href="#conteudo-principal" class="skip-link">
+    Pular para o conteúdo principal
+  </a>
 
   <header>
     <h1>♿ Portal de Acessibilidade e Sistema Braille</h1>
@@ -177,32 +180,25 @@
   <section class="painel-ferramentas" aria-label="Painel de recursos de acessibilidade">
     <h2>🛠️ Ferramentas de Acessibilidade</h2>
     <div class="botoes-grupo">
-      <button onclick="alternarContraste()" aria-label="Alternar para modo de alto contraste">🌗 Alto Contraste</button>
-      <button onclick="alterarTamanhoTexto(0.2)" aria-label="Aumentar o tamanho da fonte">🔍 A+ Aumentar</button>
-      <button onclick="alterarTamanhoTexto(-0.2)" aria-label="Diminuir o tamanho da fonte">🔉 A- Diminuir</button>
-      <button onclick="lerTudo()" aria-label="Ouvir toda a página em voz alta">🔊 Ler Página Toda</button>
-      <button onclick="pararAudio()" aria-label="Parar a leitura de áudio em voz alta">⏹️ Parar Leitura</button>
+      <button onclick="alternarContraste()" aria-label="Alternar para modo de alto contraste">
+        🌗 Alto Contraste
+      </button>
+      <button onclick="alterarTamanhoTexto(0.2)" aria-label="Aumentar o tamanho da fonte">
+        🔍 A+ Aumentar
+      </button>
+      <button onclick="alterarTamanhoTexto(-0.2)" aria-label="Diminuir o tamanho da fonte">
+        🔉 A- Diminuir
+      </button>
+      <button onclick="lerTudo()" aria-label="Ouvir toda a página em voz alta">
+        🔊 Ler Página Toda
+      </button>
+      <button onclick="pararAudio()" aria-label="Parar a leitura de áudio em voz alta">
+        ⏹️ Parar Leitura
+      </button>
     </div>
   </section>
 
   <main id="conteudo-principal">
-
-    <!-- Resumo sobre o Sistema Braille -->
-    <article class="cartao">
-      <h2>📌 Resumo sobre o Sistema Braille</h2>
-      <ul>
-        <li class="texto-leitura">O sistema Braille é um código de escrita em relevo voltado às pessoas com deficiência visual.</li>
-        <li class="texto-leitura">Possui uma estrutura em relevo, formada por seis pontos verticais divididos em duas colunas de três pontos em cada.</li>
-        <li class="texto-leitura">Existem alguns sinais exclusivos na língua portuguesa.</li>
-        <li class="texto-leitura">O sistema Braille foi oficialmente aceito em 1843, tendo sido criado por Louis Braille e testado por ele, por pessoas próximas a ele e por estudiosos.</li>
-        <li class="texto-leitura">Chegou ao Brasil por meio de José Álvares de Azevedo, filho do escritor Álvares de Azevedo, que estudou no Instituto Real dos Jovens Cegos de Paris no mesmo período em que o sistema Braille estava em fase de adaptação.</li>
-        <li class="texto-leitura">Em 1854, foi criado o Imperial Instituto dos Meninos Cegos, que hoje carrega o nome de Instituto Benjamin Constant, localizado no bairro da Urca, no Rio de Janeiro.</li>
-        <li class="texto-leitura">A leitura do Braille é tátil, feita da esquerda para a direita e passando letra por letra. Ela pode ser bimanual ou unimanual.</li>
-        <li class="texto-leitura">Mesmo o Braille sendo um sistema muito conhecido para a leitura, ele apresenta um processo mais complicado em sua escrita.</li>
-        <li class="texto-leitura">O Braille contribui para que pessoas cegas possam viver uma vida mais acessível e independente, sendo uma forma de inclusão social.</li>
-        <li class="texto-leitura">Existem diversas opções para quem deseja aprender um pouco sobre o sistema Braille e, para isso, cada um deve levar em consideração o seu nível de dificuldade para aprender.</li>
-      </ul>
-    </article>
 
     <!-- O que é o sistema Braille? -->
     <article class="cartao">
@@ -215,23 +211,6 @@
       </p>
       <p class="texto-leitura">
         O conjunto possibilita a formação de 63 símbolos; no entanto, o espaço que não é ocupado pelos pontos também é considerado como um sinal e, por isso, considera-se que o sistema Braille possui 64 símbolos.
-      </p>
-    </article>
-
-    <!-- Criação do sistema Braille -->
-    <article class="cartao">
-      <h2>✍️ Criação do Sistema Braille</h2>
-      <p class="texto-leitura">
-        Louis Braille nasceu em Coupvray, na França, em 4 de janeiro de 1809. Ficou cego aos 5 anos de idade e desenvolveu o sistema Braille a fim de que existisse um método melhor e mais amplo de estudos para pessoas cegas. Faleceu em 1852, aos 43 anos, sem acompanhar o sucesso do sistema.
-      </p>
-      <p class="texto-leitura">
-        Até chegar ao sistema Braille conhecido e utilizado hoje, alguns formatos foram testados por Louis Braille, por amigos, por estudiosos e por pessoas que conviveram com ele e que tinham o mesmo interesse em facilitar o acesso de pessoas cegas ao ensino.
-      </p>
-      <p class="texto-leitura">
-        O capitão de artilharia do exército de Luís XIII, Charles Barbier de la Serre, foi uma das pessoas que contribuíram com Louis Braille na pesquisa. Charles possuía um sistema de sinais em relevo para transmitir ordens aos soldados no período da noite, conhecido como "sonografia".
-      </p>
-      <p class="texto-leitura">
-        Porém, mesmo que os sinais pudessem ser lidos com a ponta dos dedos, eles eram muito complexos para a memorização e não permitiam que as palavras fossem soletadas porque um grande número de sinais era usado para formar uma única palavra.
       </p>
     </article>
 
@@ -254,15 +233,15 @@
 
       <h3>🎙️ Tecnologias de Voz e Comando Fonético</h3>
       <p class="texto-leitura">
-        Além do Braille, tecnologias modernas como leitores de tela por áudio, assistentes digitais e comandos fonéticos permitem que pessoas com deficiência visual utilizem dispositivos digitais com facilidade.
+        Além do Braille, ferramentas tecnológicas modernas como leitores de tela por áudio, assistentes de voz e comandos fonéticos permitem que pessoas com deficiência ou dificuldades de leitura utilizem celulares e computadores de forma simples e autônoma.
       </p>
 
       <!-- Imagem de Comando de Voz no Celular -->
-<figure>
-  <img src="17877764636719119106479649775164.jpg" 
-       alt="Ilustração de um perfil de pessoa falando próximo ao microfone de um smartphone, emitindo ondas sonoras vermelhas." />
-  <figcaption class="texto-leitura">O uso de comandos de voz facilita a navegação para quem possui dificuldades de leitura ou visão reduzida.</figcaption>
-</figure>
+      <figure>
+        <img src="17877764636719119106479649775164.jpg" 
+             alt="Ilustração de um perfil de pessoa falando próximo ao microfone de um smartphone, emitindo ondas sonoras vermelhas." />
+        <figcaption class="texto-leitura">O uso de comandos de voz facilita a navegação para quem possui dificuldades de leitura ou visão reduzida.</figcaption>
+      </figure>
     </article>
 
   </main>
@@ -290,7 +269,7 @@
     const synth = window.speechSynthesis;
 
     function lerTexto(texto, elemento) {
-      synth.cancel();
+      synth.cancel(); // Cancela leituras em andamento
 
       const mensagem = new SpeechSynthesisUtterance(texto);
       mensagem.lang = 'pt-BR';
