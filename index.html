@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Acessível</title>
+  <style>
+    /* Estilos focados em legibilidade e alto contraste */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #121212;
+      --font-size: 1.25rem; /* Fonte maior por padrão (20px) */
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      font-size: var(--font-size);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Indicador visual claro de foco para navegação via teclado */
+    *:focus {
+      outline: 4px solid #005fcc !important;
+      outline-offset: 2px;
+    }
+
+    /* Modo de Alto Contraste */
+    body.alto-contraste {
+      --bg-color: #000000;
+      --text-color: #ffff00; /* Amarelo no preto para máxima visibilidade */
+    }
+
+    header, main, footer {
+      margin-bottom: 30px;
+    }
+
+    .painel-acessibilidade {
+      background-color: #f0f0f0;
+      border: 2px solid #333;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    body.alto-contraste .painel-acessibilidade {
+      background-color: #1a1a1a;
+      border-color: #ffff00;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 10px 15px;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Atalho de navegação rápida para leitores de tela -->
+  <a href="#conteudo-principal" style="position: absolute; left: -9999px;" onfocus="this.style.left='10px'">
+    Ir para o conteúdo principal
+  </a>
+
+  <header>
+    <h1>Portal de Notícias Acessível</h1>
+  </header>
+
+  <!-- Painel de Ferramentas de Acessibilidade -->
+  <section class="painel-acessibilidade" aria-label="Ferramentas de acessibilidade">
+    <h2>Acessibilidade</h2>
+    <button onclick="alternarContraste()" aria-label="Alternar modo de alto contraste">
+      Alto Contraste
+    </button>
+    <button onclick="alterarTamanhoFonte(0.2)" aria-label="Aumentar tamanho do texto">
+      Aumentar Texto
+    </button>
+    <button onclick="alterarTamanhoFonte(-0.2)" aria-label="Diminuir tamanho do texto">
+      Diminuir Texto
+    </button>
+    <button onclick="lerTextoPrincipal()" aria-label="Ouvir o conteúdo da página em voz alta">
+      🔊 Ouvir Texto (Leitor de Voz)
+    </button>
+    <button onclick="pararLeitura()" aria-label="Parar a leitura em voz alta">
+      ⏹️ Parar Leitura
+    </button>
+  </section>
+
+  <!-- Conteúdo Principal com Estrutura Semântica -->
+  <main id="conteudo-principal">
+    <article>
+      <h2>Importância da Acessibilidade na Web</h2>
+      <p id="texto-para-ler">
+        A acessibilidade na web garante que todas as pessoas, incluindo aquelas com deficiência visual ou dificuldades de leitura, possam navegar, entender e interagir com a informação de forma independente.
+      </p>
+      
+      <!-- Imagem com descrição detalhada via texto alternativo (alt) -->
+      <img src="https://via.placeholder.com/600x300" 
+           alt="Fotografia de um computador exbindo uma tela com texto em alto contraste e um par de fones de ouvido ao lado." 
+           style="max-width: 100%; height: auto; margin-top: 15px;">
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Site Acessível. Desenvolvido com foco em inclusão.</p>
+  </footer>
+
+  <script>
+    // Função para alternar o modo de alto contraste
+    function alternarContraste() {
+      document.body.classList.toggle('alto-contraste');
+    }
+
+    // Função para alterar o tamanho da fonte dinamicamente
+    let tamanhoAtual = 1.25;
+    function alterarTamanhoFonte(delta) {
+      tamanhoAtual += delta;
+      if (tamanhoAtual < 1) tamanhoAtual = 1;
+      if (tamanhoAtual > 2.5) tamanhoAtual = 2.5;
+      document.documentElement.style.setProperty('--font-size', tamanhoAtual + 'rem');
+    }
+
+    // Recursos de Síntese de Voz (ajuda quem não consegue ler)
+    let synth = window.speechSynthesis;
+
+    function lerTextoPrincipal() {
+      // Para qualquer leitura em andamento antes de iniciar uma nova
+      synth.cancel();
+
+      const texto = document.getElementById('texto-para-ler').innerText;
+      const mensagem = new SpeechSynthesisUtterance(texto);
+      mensagem.lang = 'pt-BR';
+      mensagem.rate = 1.0; // Velocidade da fala
+
+      synth.speak(mensagem);
+    }
+
+    function pararLeitura() {
+      synth.cancel();
+    }
+  </script>
+
+</body>
+</html>
