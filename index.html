@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Acessível - Inclusão Digital</title>
+  <title>Acessibilidade e o Sistema Braille</title>
   <style>
     :root {
-      --bg-color: #f9f9f9;
-      --text-color: #1a1a1a;
+      --bg-color: #f4f6f9;
+      --text-color: #111111;
       --card-bg: #ffffff;
       --primary-color: #0056b3;
+      --border-color: #d1d5db;
       --font-size: 1.25rem;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: var(--font-size);
       line-height: 1.8;
       max-width: 900px;
@@ -24,18 +29,42 @@
       padding: 20px;
     }
 
-    /* Foco visual destacado para navegação por teclado */
+    /* Foco acessível para navegação por teclado */
     *:focus {
       outline: 4px solid #ffbf00 !important;
       outline-offset: 3px;
     }
 
-    /* Estilo do Modo Alto Contraste */
+    /* Alto contraste */
     body.alto-contraste {
       --bg-color: #000000;
       --text-color: #ffff00;
       --card-bg: #121212;
       --primary-color: #00e5ff;
+      --border-color: #ffff00;
+    }
+
+    /* Atalho para leitores de tela */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px;
+      z-index: 100;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
 
     .painel-ferramentas {
@@ -43,17 +72,22 @@
       border: 3px solid var(--primary-color);
       padding: 20px;
       border-radius: 10px;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
+    }
+
+    .painel-ferramentas h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
     }
 
     .botoes-grupo {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     button {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       padding: 12px 18px;
       border: 2px solid var(--text-color);
       background-color: var(--card-bg);
@@ -63,121 +97,187 @@
       border-radius: 6px;
     }
 
-    button:hover {
+    button:hover, button:focus {
       background-color: var(--primary-color);
       color: #ffffff;
     }
 
-    body.alto-contraste button:hover {
+    body.alto-contraste button:hover, body.alto-contraste button:focus {
       color: #000000;
     }
 
     .cartao {
       background-color: var(--card-bg);
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      padding: 25px;
+      margin-bottom: 25px;
+      border-radius: 10px;
     }
 
-    body.alto-contraste .cartao {
-      border-color: #ffff00;
+    .cartao h2, .cartao h3 {
+      color: var(--primary-color);
+      margin-top: 0;
     }
 
-    /* Destaque visual no texto lido em voz alta */
+    body.alto-contraste .cartao h2, body.alto-contraste .cartao h3 {
+      color: #ffff00;
+    }
+
     .lendo-agora {
       background-color: #ffeb3b;
       color: #000000 !important;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    figure {
+      margin: 20px 0;
+      text-align: center;
     }
 
     img {
       max-width: 100%;
       height: auto;
-      border-radius: 6px;
-      margin-top: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
     }
 
     figcaption {
       font-size: 0.95rem;
       font-style: italic;
-      margin-top: 5px;
+      margin-top: 8px;
+    }
+
+    ul, ol {
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
     }
   </style>
 </head>
 <body>
 
   <!-- Atalho de acessibilidade para navegação direta -->
-  <a href="#conteudo-principal" style="position: absolute; left: -9999px;" onfocus="this.style.left='10px'">
-    Pular para o conteúdo principal
-  </a>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
   <header>
-    <h1>♿ Portal de Acessibilidade e Inclusão</h1>
+    <h1>♿ Portal de Acessibilidade e Sistema Braille</h1>
   </header>
 
+  <!-- Painel de Acessibilidade -->
   <section class="painel-ferramentas" aria-label="Painel de recursos de acessibilidade">
-    <h2>🛠️ Controles de Acessibilidade</h2>
+    <h2>🛠️ Ferramentas de Acessibilidade</h2>
     <div class="botoes-grupo">
-      <button onclick="alternarContraste()" aria-label="Alternar para alto contraste">
-        🌗 Alto Contraste
-      </button>
-      <button onclick="alterarTamanhoTexto(0.2)" aria-label="Aumentar tamanho do texto">
-        🔍 A+ Aumentar
-      </button>
-      <button onclick="alterarTamanhoTexto(-0.2)" aria-label="Diminuir tamanho do texto">
-        🔉 A- Diminuir
-      </button>
-      <button onclick="lerTudo()" aria-label="Ouvir toda a página">
-        🔊 Ler Página Toda
-      </button>
-      <button onclick="pararAudio()" aria-label="Parar leitura de áudio">
-        ⏹️ Parar Áudio
-      </button>
+      <button onclick="alternarContraste()" aria-label="Alternar para modo de alto contraste">🌗 Alto Contraste</button>
+      <button onclick="alterarTamanhoTexto(0.2)" aria-label="Aumentar o tamanho da fonte">🔍 A+ Aumentar</button>
+      <button onclick="alterarTamanhoTexto(-0.2)" aria-label="Diminuir o tamanho da fonte">🔉 A- Diminuir</button>
+      <button onclick="lerTudo()" aria-label="Ouvir toda a página em voz alta">🔊 Ler Página Toda</button>
+      <button onclick="pararAudio()" aria-label="Parar a leitura de áudio em voz alta">⏹️ Parar Leitura</button>
     </div>
   </section>
 
   <main id="conteudo-principal">
-    
-    <article class="cartao" id="secao-1">
-      <h2>Uso de Leitores de Tela na Web</h2>
-      <p class="texto-leitura">
-        O leitor de telas é uma tecnologia assistiva muito utilizada por pessoas cegas e com baixa visão.
-        Ele lê o texto do site em voz alta e permite a navegação total utilizando apenas o teclado.
-      </p>
-      
-      <!-- Imagem extraída do artigo do Movimento Web para Todos -->
-      <figure>
-        <img src="https://mwpt.com.br/wp-content/uploads/2020/06/site-fone-ouvido.png" 
-             alt="Ilustração colorida da tela de computador que mostra a simulação de um site com duas colunas, textos e fotos. Há dois ícones de fones de ouvido: um está no lado esquerdo e outro no lado direito." />
-        <figcaption class="texto-leitura">Ao instalar um leitor de telas, você se aproxima ainda mais da causa da acessibilidade digital.</figcaption>
-      </figure>
+
+    <!-- Resumo sobre o Sistema Braille -->
+    <article class="cartao">
+      <h2>📌 Resumo sobre o Sistema Braille</h2>
+      <ul>
+        <li class="texto-leitura">O sistema Braille é um código de escrita em relevo voltado às pessoas com deficiência visual.</li>
+        <li class="texto-leitura">Possui uma estrutura em relevo, formada por seis pontos verticais divididos em duas colunas de três pontos em cada.</li>
+        <li class="texto-leitura">Existem alguns sinais exclusivos na língua portuguesa.</li>
+        <li class="texto-leitura">O sistema Braille foi oficialmente aceito em 1843, tendo sido criado por Louis Braille e testado por ele, por pessoas próximas a ele e por estudiosos.</li>
+        <li class="texto-leitura">Chegou ao Brasil por meio de José Álvares de Azevedo, filho do escritor Álvares de Azevedo, que estudou no Instituto Real dos Jovens Cegos de Paris no mesmo período em que o sistema Braille estava em fase de adaptação.</li>
+        <li class="texto-leitura">Em 1854, foi criado o Imperial Instituto dos Meninos Cegos, que hoje carrega o nome de Instituto Benjamin Constant, localizado no bairro da Urca, no Rio de Janeiro.</li>
+        <li class="texto-leitura">A leitura do Braille é tátil, feita da esquerda para a direita e passando letra por letra. Ela pode ser bimanual ou unimanual.</li>
+        <li class="texto-leitura">Mesmo o Braille sendo um sistema muito conhecido para a leitura, ele apresenta um processo mais complicado em sua escrita.</li>
+        <li class="texto-leitura">O Braille contribui para que pessoas cegas possam viver uma vida mais acessível e independente, sendo uma forma de inclusão social.</li>
+        <li class="texto-leitura">Existem diversas opções para quem deseja aprender um pouco sobre o sistema Braille e, para isso, cada um deve levar em consideração o seu nível de dificuldade para aprender.</li>
+      </ul>
     </article>
 
-    <article class="cartao" id="secao-2">
-      <h2>Como ajudar quem tem dificuldade de leitura?</h2>
+    <!-- O que é o sistema Braille? -->
+    <article class="cartao">
+      <h2>📖 O que é o sistema Braille?</h2>
       <p class="texto-leitura">
-        Para apoiar pessoas com dislexia, analfabetismo funcional ou dificuldades de cognição:
+        O sistema Braille é um código de escrita em relevo voltado às pessoas com deficiência visual. O processo é o mais adotado no mundo e, além das letras e números, ele oferece símbolos, pontuações e outros sinais que facilitam o entendimento de uma mensagem por aqueles que não conseguem enxergar.
       </p>
-      <ul>
-        <li class="texto-leitura">Use frases curtas e diretas.</li>
-        <li class="texto-leitura">Adicione ícones visuais ao lado de botões importantes.</li>
-        <li class="texto-leitura">Ofereça suporte a áudio para ler o texto em voz alta automaticamente.</li>
-      </ul>
+      <p class="texto-leitura">
+        Por meio do toque das mãos, as pessoas que têm conhecimento dos caracteres do Braille podem realizar suas leituras de todos os tipos de informações. O Braille possui uma estrutura em relevo, formada por seis pontos verticais divididos em duas colunas de três pontos em cada. O sistema possibilita combinações que formam letras, números e símbolos.
+      </p>
+      <p class="texto-leitura">
+        O conjunto possibilita a formação de 63 símbolos; no entanto, o espaço que não é ocupado pelos pontos também é considerado como um sinal e, por isso, considera-se que o sistema Braille possui 64 símbolos.
+      </p>
+    </article>
+
+    <!-- Criação do sistema Braille -->
+    <article class="cartao">
+      <h2>✍️ Criação do Sistema Braille</h2>
+      <p class="texto-leitura">
+        Louis Braille nasceu em Coupvray, na França, em 4 de janeiro de 1809. Ficou cego aos 5 anos de idade e desenvolveu o sistema Braille a fim de que existisse um método melhor e mais amplo de estudos para pessoas cegas. Faleceu em 1852, aos 43 anos, sem acompanhar o sucesso do sistema.
+      </p>
+      <p class="texto-leitura">
+        Até chegar ao sistema Braille conhecido e utilizado hoje, alguns formatos foram testados por Louis Braille, por amigos, por estudiosos e por pessoas que conviveram com ele e que tinham o mesmo interesse em facilitar o acesso de pessoas cegas ao ensino.
+      </p>
+      <p class="texto-leitura">
+        O capitão de artilharia do exército de Luís XIII, Charles Barbier de la Serre, foi uma das pessoas que contribuíram com Louis Braille na pesquisa. Charles possuía um sistema de sinais em relevo para transmitir ordens aos soldados no período da noite, conhecido como "sonografia".
+      </p>
+      <p class="texto-leitura">
+        Porém, mesmo que os sinais pudessem ser lidos com a ponta dos dedos, eles eram muito complexos para a memorização e não permitiam que as palavras fossem soletadas porque um grande número de sinais era usado para formar uma única palavra.
+      </p>
+    </article>
+
+    <!-- Importância do Braille e Recursos de Áudio -->
+    <article class="cartao">
+      <h2>💡 Importância do Braille e da Acessibilidade</h2>
+      <p class="texto-leitura">
+        Utilizar o sistema Braille é uma forma de inclusão social. Com ele, é possível proporcionar mais acessibilidade às pessoas com deficiência visual, contribuindo também para uma maior independência desse público, além do acesso ao ensino, aprendizagem, mercado de trabalho e às demais atividades que fazem parte da rotina de todas as pessoas.
+      </p>
+      <p class="texto-leitura">
+        Além de instituições de ensino voltadas para o atendimento desse público, também é importante que os recursos sejam incluídos em locais e até mesmo objetos que fazem parte da vida cotidiana.
+      </p>
+
+      <!-- Imagem do Painel de Elevador em Braille enviado -->
+      <figure>
+        <img src="https://share.google/QANtHLK25ryZqFMP4" 
+       alt="Fotografia em close do painel de botões metálico de um elevador. Uma pessoa pressiona o botão número 3. Todos os botões possuem gravações em Braille abaixo dos números." />
+  <figcaption class="texto-leitura">Botões de elevador com marcações em Braille garantem independência de locomoção em prédios e locais públicos.</figcaption>
+</figure>
+
+      <h3>🎙️ Tecnologias de Voz e Comando Fonético</h3>
+      <p class="texto-leitura">
+        Além do Braille, tecnologias modernas como leitores de tela por áudio, assistentes digitais e comandos fonéticos permitem que pessoas com deficiência visual utilizem dispositivos digitais com facilidade.
+      </p>
+
+      <!-- Imagem de Comando de Voz no Celular -->
+<figure>
+  <img src="17877764636719119106479649775164.jpg" 
+       alt="Ilustração de um perfil de pessoa falando próximo ao microfone de um smartphone, emitindo ondas sonoras vermelhas." />
+  <figcaption class="texto-leitura">O uso de comandos de voz facilita a navegação para quem possui dificuldades de leitura ou visão reduzida.</figcaption>
+</figure>
     </article>
 
   </main>
 
   <footer>
-    <p class="texto-leitura">© 2026 Desenvolvido com padrões de acessibilidade W3C/WCAG.</p>
+    <p class="texto-leitura">© 2026 Portal de Acessibilidade. Desenvolvido com padrões de inclusão W3C/WCAG.</p>
   </footer>
 
   <script>
-    // Alternar alto contraste
+    // Função para alternar modo alto contraste
     function alternarContraste() {
       document.body.classList.toggle('alto-contraste');
     }
 
-    // Ajuste do tamanho do texto
+    // Função para redimensionar tamanho do texto
     let tamanhoFonte = 1.25;
     function alterarTamanhoTexto(variacao) {
       tamanhoFonte += variacao;
@@ -186,11 +286,12 @@
       document.documentElement.style.setProperty('--font-size', tamanhoFonte + 'rem');
     }
 
-    // Leitor de Áudio Integrado (Web Speech API)
+    // Sistema de Síntese de Voz (Web Speech API)
     const synth = window.speechSynthesis;
 
     function lerTexto(texto, elemento) {
-      synth.cancel(); // Para áudios anteriores
+      synth.cancel();
+
       const mensagem = new SpeechSynthesisUtterance(texto);
       mensagem.lang = 'pt-BR';
       mensagem.rate = 1.0;
@@ -198,16 +299,16 @@
       if (elemento) {
         elemento.classList.add('lendo-agora');
         mensagem.onend = () => elemento.classList.remove('lendo-agora');
+        mensagem.onerror = () => elemento.classList.remove('lendo-agora');
       }
 
       synth.speak(mensagem);
     }
 
     function lerTudo() {
-      const todosTextos = Array.from(document.querySelectorAll('.texto-leitura, h1, h2'))
-        .map(el => el.innerText)
-        .join('. ');
-      lerTexto(todosTextos, null);
+      const elementos = document.querySelectorAll('.texto-leitura, h1, h2, h3');
+      const textoCompleto = Array.from(elementos).map(el => el.innerText).join('. ');
+      lerTexto(textoCompleto, null);
     }
 
     function pararAudio() {
