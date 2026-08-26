@@ -14,9 +14,7 @@
       --font-size: 1.25rem;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       background-color: var(--bg-color);
@@ -29,13 +27,11 @@
       padding: 20px;
     }
 
-    /* Foco acessível para navegação por teclado */
     *:focus {
       outline: 4px solid #ffbf00 !important;
       outline-offset: 3px;
     }
 
-    /* Alto contraste */
     body.alto-contraste {
       --bg-color: #000000;
       --text-color: #ffff00;
@@ -44,7 +40,6 @@
       --border-color: #ffff00;
     }
 
-    /* Atalho para leitores de tela */
     .skip-link {
       position: absolute;
       top: -40px;
@@ -54,18 +49,10 @@
       padding: 8px;
       z-index: 100;
     }
-    .skip-link:focus {
-      top: 0;
-    }
+    .skip-link:focus { top: 0; }
 
-    header {
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
+    header { margin-bottom: 20px; }
+    h1 { font-size: 2rem; margin-bottom: 10px; }
 
     .painel-ferramentas {
       background-color: var(--card-bg);
@@ -75,10 +62,7 @@
       margin-bottom: 30px;
     }
 
-    .painel-ferramentas h2 {
-      margin-top: 0;
-      font-size: 1.4rem;
-    }
+    .painel-ferramentas h2 { margin-top: 0; font-size: 1.4rem; }
 
     .botoes-grupo {
       display: flex;
@@ -102,9 +86,7 @@
       color: #ffffff;
     }
 
-    body.alto-contraste button:hover, body.alto-contraste button:focus {
-      color: #000000;
-    }
+    body.alto-contraste button:hover, body.alto-contraste button:focus { color: #000000; }
 
     .cartao {
       background-color: var(--card-bg);
@@ -119,11 +101,8 @@
       margin-top: 0;
     }
 
-    body.alto-contraste .cartao h2, body.alto-contraste .cartao h3 {
-      color: #ffff00;
-    }
+    body.alto-contraste .cartao h2, body.alto-contraste .cartao h3 { color: #ffff00; }
 
-    /* Destaque visual enquanto o texto é lido */
     .lendo-agora {
       background-color: #ffeb3b;
       color: #000000 !important;
@@ -131,10 +110,7 @@
       border-radius: 4px;
     }
 
-    figure {
-      margin: 20px 0;
-      text-align: center;
-    }
+    figure { margin: 20px 0; text-align: center; }
 
     img {
       max-width: 100%;
@@ -143,19 +119,7 @@
       border: 1px solid var(--border-color);
     }
 
-    figcaption {
-      font-size: 0.95rem;
-      font-style: italic;
-      margin-top: 8px;
-    }
-
-    ul, ol {
-      padding-left: 25px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
+    figcaption { font-size: 0.95rem; font-style: italic; margin-top: 8px; }
 
     footer {
       text-align: center;
@@ -167,40 +131,25 @@
 </head>
 <body>
 
-  <!-- Atalho de acessibilidade para navegação direta -->
-  <a href="#conteudo-principal" class="skip-link">
-    Pular para o conteúdo principal
-  </a>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
   <header>
     <h1>♿ Portal de Acessibilidade e Sistema Braille</h1>
   </header>
 
-  <!-- Painel de Acessibilidade -->
   <section class="painel-ferramentas" aria-label="Painel de recursos de acessibilidade">
     <h2>🛠️ Ferramentas de Acessibilidade</h2>
     <div class="botoes-grupo">
-      <button onclick="alternarContraste()" aria-label="Alternar para modo de alto contraste">
-        🌗 Alto Contraste
-      </button>
-      <button onclick="alterarTamanhoTexto(0.2)" aria-label="Aumentar o tamanho da fonte">
-        🔍 A+ Aumentar
-      </button>
-      <button onclick="alterarTamanhoTexto(-0.2)" aria-label="Diminuir o tamanho da fonte">
-        🔉 A- Diminuir
-      </button>
-      <button onclick="lerTudo()" aria-label="Ouvir toda a página em voz alta">
-        🔊 Ler Página Toda
-      </button>
-      <button onclick="pararAudio()" aria-label="Parar a leitura de áudio em voz alta">
-        ⏹️ Parar Leitura
-      </button>
+      <button onclick="alternarContraste()">🌗 Alto Contraste</button>
+      <button onclick="alterarTamanhoTexto(0.2)">🔍 A+ Aumentar</button>
+      <button onclick="alterarTamanhoTexto(-0.2)">🔉 A- Diminuir</button>
+      <button onclick="lerTudo()">🔊 Ler Página Toda</button>
+      <button onclick="pararAudio()">⏹️ Parar Leitura</button>
     </div>
   </section>
 
   <main id="conteudo-principal">
 
-    <!-- O que é o sistema Braille? -->
     <article class="cartao">
       <h2>📖 O que é o sistema Braille?</h2>
       <p class="texto-leitura">
@@ -214,7 +163,6 @@
       </p>
     </article>
 
-    <!-- Importância do Braille e Recursos de Áudio -->
     <article class="cartao">
       <h2>💡 Importância do Braille e da Acessibilidade</h2>
       <p class="texto-leitura">
@@ -224,20 +172,20 @@
         Além de instituições de ensino voltadas para o atendimento desse público, também é importante que os recursos sejam incluídos em locais e até mesmo objetos que fazem parte da vida cotidiana.
       </p>
 
-      <!-- Imagem do Painel de Elevador em Braille enviado -->
       <figure>
-       <img src="painel_elevador.jpg.jpeg" alt="Fotografia em close do painel..." />
-        </figure>
+        <img src="painel_elevador.jpg" alt="Painel de botões em Braille no elevador." />
+        <figcaption class="texto-leitura">Botões de elevador com marcações em Braille garantem independência de locomoção em prédios e locais públicos.</figcaption>
+      </figure>
 
       <h3>🎙️ Tecnologias de Voz e Comando Fonético</h3>
       <p class="texto-leitura">
         Além do Braille, ferramentas tecnológicas modernas como leitores de tela por áudio, assistentes de voz e comandos fonéticos permitem que pessoas com deficiência ou dificuldades de leitura utilizem celulares e computadores de forma simples e autônoma.
       </p>
 
-      <!-- Imagem de Comando de Voz no Celular -->
       <figure>
-        <img src="comando_voz.jpg.jpg" alt="Ilustração de uma pessoa falando..." />
-        </figure>
+        <img src="comando_voz.jpg" alt="Comando de voz no celular." />
+        <figcaption class="texto-leitura">O uso de comandos de voz facilita a navegação para quem possui dificuldades de leitura ou visão reduzida.</figcaption>
+      </figure>
     </article>
 
   </main>
@@ -247,12 +195,8 @@
   </footer>
 
   <script>
-    // Função para alternar modo alto contraste
-    function alternarContraste() {
-      document.body.classList.toggle('alto-contraste');
-    }
+    function alternarContraste() { document.body.classList.toggle('alto-contraste'); }
 
-    // Função para redimensionar tamanho do texto
     let tamanhoFonte = 1.25;
     function alterarTamanhoTexto(variacao) {
       tamanhoFonte += variacao;
@@ -261,22 +205,17 @@
       document.documentElement.style.setProperty('--font-size', tamanhoFonte + 'rem');
     }
 
-    // Sistema de Síntese de Voz (Web Speech API)
     const synth = window.speechSynthesis;
 
     function lerTexto(texto, elemento) {
-      synth.cancel(); // Cancela leituras em andamento
-
+      synth.cancel();
       const mensagem = new SpeechSynthesisUtterance(texto);
       mensagem.lang = 'pt-BR';
-      mensagem.rate = 1.0;
-
       if (elemento) {
         elemento.classList.add('lendo-agora');
         mensagem.onend = () => elemento.classList.remove('lendo-agora');
         mensagem.onerror = () => elemento.classList.remove('lendo-agora');
       }
-
       synth.speak(mensagem);
     }
 
@@ -291,14 +230,9 @@
       document.querySelectorAll('.lendo-agora').forEach(el => el.classList.remove('lendo-agora'));
     }
 
-    // Leitura ao passar o mouse ou focar
     document.querySelectorAll('.texto-leitura').forEach(elemento => {
-      elemento.addEventListener('mouseenter', () => {
-        lerTexto(elemento.innerText, elemento);
-      });
-      elemento.addEventListener('mouseleave', () => {
-        pararAudio();
-      });
+      elemento.addEventListener('mouseenter', () => lerTexto(elemento.innerText, elemento));
+      elemento.addEventListener('mouseleave', () => pararAudio());
     });
   </script>
 
