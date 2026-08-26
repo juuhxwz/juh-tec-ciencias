@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Acessível</title>
+  <title>Portal Acessível - Inclusão Digital</title>
   <style>
-    /* Estilos focados em legibilidade e alto contraste */
     :root {
-      --bg-color: #ffffff;
-      --text-color: #121212;
-      --font-size: 1.25rem; /* Fonte maior por padrão (20px) */
+      --bg-color: #f9f9f9;
+      --text-color: #1a1a1a;
+      --card-bg: #ffffff;
+      --primary-color: #0056b3;
+      --font-size: 1.25rem;
     }
 
     body {
@@ -18,132 +19,206 @@
       font-family: Arial, sans-serif;
       font-size: var(--font-size);
       line-height: 1.8;
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 20px;
     }
 
-    /* Indicador visual claro de foco para navegação via teclado */
+    /* Foco visual destacado para navegação por teclado */
     *:focus {
-      outline: 4px solid #005fcc !important;
-      outline-offset: 2px;
+      outline: 4px solid #ffbf00 !important;
+      outline-offset: 3px;
     }
 
-    /* Modo de Alto Contraste */
+    /* Estilo do Modo Alto Contraste */
     body.alto-contraste {
       --bg-color: #000000;
-      --text-color: #ffff00; /* Amarelo no preto para máxima visibilidade */
+      --text-color: #ffff00;
+      --card-bg: #121212;
+      --primary-color: #00e5ff;
     }
 
-    header, main, footer {
-      margin-bottom: 30px;
+    .painel-ferramentas {
+      background-color: var(--card-bg);
+      border: 3px solid var(--primary-color);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
     }
 
-    .painel-acessibilidade {
-      background-color: #f0f0f0;
-      border: 2px solid #333;
-      padding: 15px;
+    .botoes-grupo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button {
+      font-size: 1.1rem;
+      padding: 12px 18px;
+      border: 2px solid var(--text-color);
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
+
+    body.alto-contraste button:hover {
+      color: #000000;
+    }
+
+    .cartao {
+      background-color: var(--card-bg);
+      border: 1px solid #ccc;
+      padding: 20px;
       margin-bottom: 20px;
       border-radius: 8px;
     }
 
-    body.alto-contraste .painel-acessibilidade {
-      background-color: #1a1a1a;
+    body.alto-contraste .cartao {
       border-color: #ffff00;
     }
 
-    button {
-      font-size: 1rem;
-      padding: 10px 15px;
-      margin: 5px;
-      cursor: pointer;
-      font-weight: bold;
+    /* Destaque visual no texto lido em voz alta */
+    .lendo-agora {
+      background-color: #ffeb3b;
+      color: #000000 !important;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Atalho de navegação rápida para leitores de tela -->
+  <!-- Atalho de acessibilidade para navegação direta -->
   <a href="#conteudo-principal" style="position: absolute; left: -9999px;" onfocus="this.style.left='10px'">
-    Ir para o conteúdo principal
+    Pular para o conteúdo principal
   </a>
 
   <header>
-    <h1>Portal de Notícias Acessível</h1>
+    <h1>♿ Portal de Acessibilidade e Inclusão</h1>
   </header>
 
-  <!-- Painel de Ferramentas de Acessibilidade -->
-  <section class="painel-acessibilidade" aria-label="Ferramentas de acessibilidade">
-    <h2>Acessibilidade</h2>
-    <button onclick="alternarContraste()" aria-label="Alternar modo de alto contraste">
-      Alto Contraste
-    </button>
-    <button onclick="alterarTamanhoFonte(0.2)" aria-label="Aumentar tamanho do texto">
-      Aumentar Texto
-    </button>
-    <button onclick="alterarTamanhoFonte(-0.2)" aria-label="Diminuir tamanho do texto">
-      Diminuir Texto
-    </button>
-    <button onclick="lerTextoPrincipal()" aria-label="Ouvir o conteúdo da página em voz alta">
-      🔊 Ouvir Texto (Leitor de Voz)
-    </button>
-    <button onclick="pararLeitura()" aria-label="Parar a leitura em voz alta">
-      ⏹️ Parar Leitura
-    </button>
+  <section class="painel-ferramentas" aria-label="Painel de recursos de acessibilidade">
+    <h2>🛠️ Controles de Acessibilidade</h2>
+    <div class="botoes-grupo">
+      <button onclick="alternarContraste()" aria-label="Alternar para alto contraste">
+        🌗 Alto Contraste
+      </button>
+      <button onclick="alterarTamanhoTexto(0.2)" aria-label="Aumentar tamanho do texto">
+        🔍 A+ Aumentar
+      </button>
+      <button onclick="alterarTamanhoTexto(-0.2)" aria-label="Diminuir tamanho do texto">
+        🔉 A- Diminuir
+      </button>
+      <button onclick="lerTudo()" aria-label="Ouvir toda a página">
+        🔊 Ler Página Toda
+      </button>
+      <button onclick="pararAudio()" aria-label="Parar leitura de áudio">
+        ⏹️ Parar Áudio
+      </button>
+    </div>
   </section>
 
-  <!-- Conteúdo Principal com Estrutura Semântica -->
   <main id="conteudo-principal">
-    <article>
-      <h2>Importância da Acessibilidade na Web</h2>
-      <p id="texto-para-ler">
-        A acessibilidade na web garante que todas as pessoas, incluindo aquelas com deficiência visual ou dificuldades de leitura, possam navegar, entender e interagir com a informação de forma independente.
+    
+    <article class="cartao" id="secao-1">
+      <h2>O que é Deficiência Visual?</h2>
+      <p class="texto-leitura">
+        A deficiência visual envolve desde a perda parcial da visão (baixa visão) até a cegueira total.
+        Pessoas com baixa visão se beneficiam de fontes maiores e modos de alto contraste, enquanto
+        pessoas cegas utilizam leitores de tela que convertem o texto escrito em voz sintetizada.
       </p>
       
-      <!-- Imagem com descrição detalhada via texto alternativo (alt) -->
-      <img src="https://via.placeholder.com/600x300" 
-           alt="Fotografia de um computador exbindo uma tela com texto em alto contraste e um par de fones de ouvido ao lado." 
-           style="max-width: 100%; height: auto; margin-top: 15px;">
+      <!-- Imagem acessível com alt explicativo -->
+      <img src="https://images.unsplash.com/photo-1584697964400-2ae6a2f620ac?w=800" 
+           alt="Mão de uma pessoa cega lendo um livro impresso no sistema Braille." />
     </article>
+
+    <article class="cartao" id="secao-2">
+      <h2>Como ajudar quem tem dificuldade de leitura?</h2>
+      <p class="texto-leitura">
+        Para apoiar pessoas com dislexia, analfabetismo funcional ou dificuldades de cognição:
+      </p>
+      <ul>
+        <li class="texto-leitura">Use frases curtas e diretas.</li>
+        <li class="texto-leitura">Adicione ícones visuais ao lado de botões importantes.</li>
+        <li class="texto-leitura">Ofereça suporte a áudio para ler o texto em voz alta automaticamente.</li>
+      </ul>
+      
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800" 
+           alt="Pessoa segurando um tablet com ícone de fones de ouvido indicando o uso de áudio." />
+    </article>
+
   </main>
 
   <footer>
-    <p>&copy; 2026 Site Acessível. Desenvolvido com foco em inclusão.</p>
+    <p class="texto-leitura">© 2026 Desenvolvido com padrões de acessibilidade W3C/WCAG.</p>
   </footer>
 
   <script>
-    // Função para alternar o modo de alto contraste
+    // Alternar alto contraste
     function alternarContraste() {
       document.body.classList.toggle('alto-contraste');
     }
 
-    // Função para alterar o tamanho da fonte dinamicamente
-    let tamanhoAtual = 1.25;
-    function alterarTamanhoFonte(delta) {
-      tamanhoAtual += delta;
-      if (tamanhoAtual < 1) tamanhoAtual = 1;
-      if (tamanhoAtual > 2.5) tamanhoAtual = 2.5;
-      document.documentElement.style.setProperty('--font-size', tamanhoAtual + 'rem');
+    // Ajuste do tamanho do texto
+    let tamanhoFonte = 1.25;
+    function alterarTamanhoTexto(variacao) {
+      tamanhoFonte += variacao;
+      if (tamanhoFonte < 1.0) tamanhoFonte = 1.0;
+      if (tamanhoFonte > 2.2) tamanhoFonte = 2.2;
+      document.documentElement.style.setProperty('--font-size', tamanhoFonte + 'rem');
     }
 
-    // Recursos de Síntese de Voz (ajuda quem não consegue ler)
-    let synth = window.speechSynthesis;
+    // Leitor de Áudio Integrado (Web Speech API)
+    const synth = window.speechSynthesis;
 
-    function lerTextoPrincipal() {
-      // Para qualquer leitura em andamento antes de iniciar uma nova
-      synth.cancel();
-
-      const texto = document.getElementById('texto-para-ler').innerText;
+    function lerTexto(texto, elemento) {
+      synth.cancel(); // Para áudios anteriores
       const mensagem = new SpeechSynthesisUtterance(texto);
       mensagem.lang = 'pt-BR';
-      mensagem.rate = 1.0; // Velocidade da fala
+      mensagem.rate = 1.0;
+
+      if (elemento) {
+        elemento.classList.add('lendo-agora');
+        mensagem.onend = () => elemento.classList.remove('lendo-agora');
+      }
 
       synth.speak(mensagem);
     }
 
-    function pararLeitura() {
-      synth.cancel();
+    function lerTudo() {
+      const todosTextos = Array.from(document.querySelectorAll('.texto-leitura, h1, h2'))
+        .map(el => el.innerText)
+        .join('. ');
+      lerTexto(todosTextos, null);
     }
+
+    function pararAudio() {
+      synth.cancel();
+      document.querySelectorAll('.lendo-agora').forEach(el => el.classList.remove('lendo-agora'));
+    }
+
+    // Leitura ao passar o mouse ou focar (ajuda para quem não consegue ler bem)
+    document.querySelectorAll('.texto-leitura').forEach(elemento => {
+      elemento.addEventListener('mouseenter', () => {
+        lerTexto(elemento.innerText, elemento);
+      });
+      elemento.addEventListener('mouseleave', () => {
+        pararAudio();
+      });
+    });
   </script>
 
 </body>
